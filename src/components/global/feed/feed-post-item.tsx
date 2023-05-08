@@ -13,9 +13,9 @@ const FeedPostItem: React.FC<FeedPostItemProps> = (props) => {
             <div className="flex items-center flex-wrap mt-3">
                 <Image.PreviewGroup>
                     {
-                        postItem.attachments.map(img => {
+                        postItem.attachments.map((img, i) => {
                             return (
-                                <div className=" mr-2 mb-2 rounded overflow-hidden">
+                                <div className=" mr-2 mb-2 rounded overflow-hidden" key={i}>
                                     <Image width={80} height={80} src={img} />
                                 </div>
                             )
