@@ -1,4 +1,5 @@
 import './style.less'
+
 /**发布类型 */
 export enum PUBLISH_TYPE {
     ARTICLE = 'article',
