@@ -3,6 +3,7 @@ export enum HomeMainTabsEnum {
   HOT = "hot",
   CREATIME = "createTime",
 }
+
 /** 首页中心区域tab列表 */
 export const HomeMainTabs = [
   {

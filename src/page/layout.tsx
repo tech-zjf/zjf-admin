@@ -45,10 +45,12 @@ const LayoutPage: React.FC = () => {
                     />
                 </div>
             </header>
-            <div className=" w-full flex-1 overflow-y-auto mx-auto" style={{ width: 1200 }}>
-                <Suspense fallback={<>loading...</>}>
-                    <Outlet />
-                </Suspense>
+            <div className=" w-full flex-1 overflow-y-auto ">
+                <div className='mx-auto' style={{ width: 1200 }}>
+                    <Suspense fallback={<>loading...</>}>
+                        <Outlet />
+                    </Suspense>
+                </div>
             </div>
         </div>
     )

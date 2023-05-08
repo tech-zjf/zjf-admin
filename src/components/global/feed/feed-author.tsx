@@ -5,10 +5,15 @@ export interface FeedAuthorProps {
     author: AuthorDetailResponse
 }
 
-const FeedAuthor: React.FC<FeedAuthorProps> = () => {
+const FeedAuthor: React.FC<FeedAuthorProps> = (props) => {
+    const { author } = props
     return (
-        <div>
-            <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
+        <div className="flex items-center cursor-pointer" >
+            <Avatar src={author.url}
+                shape='circle'
+                className="w-8 h-8 mr-2"
+            />
+            <p className=" text-xs font-bold text-gary-900">{author.nickname}</p>
         </div>
     )
 }
