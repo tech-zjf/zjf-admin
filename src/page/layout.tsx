@@ -4,6 +4,7 @@ import Tabs from '../components/global/tabs';
 import Icon from '../components/widget/icon';
 import Notification from '@/components/widget/notification'
 import { Avatar } from 'antd';
+import Loading from '@/components/widget/loading';
 
 const tabs = [
     {
@@ -58,7 +59,9 @@ const LayoutPage: React.FC = () => {
             </header>
             <div className=" w-full flex-1 overflow-y-auto ">
                 <div className='mx-auto' style={{ width: 1200 }}>
-                    <Suspense fallback={<>loading...</>}>
+                    <Suspense
+                        fallback={<Loading />}
+                    >
                         <Outlet />
                     </Suspense>
                 </div>

@@ -19,9 +19,9 @@ const mockFeed = [
         title: '进度条告急！抓紧报名「掘金技术引力榜2023」',
         content: '这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊',
         createTime: '2023-05-08 12:40:12',
-        isLike: true,
+        isLike: false,
         viewCount: 12,
-        likeCount: 99,
+        likeCount: 0,
         poster: 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d2faa95eac98486d9d44c7ff5e5abad0~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
     },
     {
