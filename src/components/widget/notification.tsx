@@ -1,12 +1,16 @@
-import { Avatar, Badge } from "antd"
+import { Badge } from "antd"
+import Icon from "./icon"
 
-const Notification: React.FC = () => {
+interface NotificationProps {
+    count: number
+}
+
+const Notification: React.FC<NotificationProps> = (props) => {
+    const { count } = props
     return (
-        <div>
-            <Badge count={5}>
-                <Avatar shape="square" size="large" />
-            </Badge>
-        </div>
+        <Badge count={count} className="mr-6 cursor-pointer" size="small">
+            <Icon type="icon-tongzhi" className=" text-2xl flex items-center" />
+        </Badge>
     )
 }
 export default Notification

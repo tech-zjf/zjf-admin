@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { Outlet, useNavigate } from "react-router-dom";
 import Tabs from '../components/global/tabs';
 import Icon from '../components/widget/icon';
+import Notification from '@/components/widget/notification'
 import { Avatar } from 'antd';
 
 const tabs = [
@@ -45,10 +46,13 @@ const LayoutPage: React.FC = () => {
                         }}
                     />
                     <div className='ml-auto'>
-                        <Avatar src='https://p3-passport.byteimg.com/img/user-avatar/5a8ea89f20b9dcee6a4aa4ea6e646a17~100x100.awebp'
-                            shape='circle'
-                            className="w-10 h-10"
-                        />
+                        <div className='flex items-center'>
+                            <Notification count={9} />
+                            <Avatar src='https://p3-passport.byteimg.com/img/user-avatar/5a8ea89f20b9dcee6a4aa4ea6e646a17~100x100.awebp'
+                                shape='circle'
+                                className="w-10 h-10"
+                            />
+                        </div>
                     </div>
                 </div>
             </header>
