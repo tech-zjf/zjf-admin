@@ -23,7 +23,7 @@ const LoginCard: React.FC = () => {
                 <Form.Item
                     label="手机号"
                     name="phone"
-                    rules={[{ required: true, message: '请输入手机号' }]}
+                    rules={[{ required: true, message: '请输入手机号' }, { pattern: /^1[3-9]\d{9}$/, message: '请输入正确的手机号格式！' }]}
                 >
                     <Input />
                 </Form.Item>
@@ -31,7 +31,7 @@ const LoginCard: React.FC = () => {
                 <Form.Item
                     label="密码"
                     name="password"
-                    rules={[{ required: true, message: '请输入密码' }]}
+                    rules={[{ required: true, message: '请输入密码' }, { pattern: /^\d{6}$/, message: '请输入6位数字的密码！' }]}
                 >
                     <Input.Password />
                 </Form.Item>
