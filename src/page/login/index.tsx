@@ -1,9 +1,11 @@
-import { Button } from 'antd'
+import LoginCard from '@/components/global/login-card'
+import './style.less'
 
 const LoginPage: React.FC = () => {
-
     return (
-        <Button>登录</Button>
+        <div className=" w-full h-full overflow-hidden login-wrap flex items-center justify-center">
+            <LoginCard />
+        </div>
     )
 }
 export default LoginPage
