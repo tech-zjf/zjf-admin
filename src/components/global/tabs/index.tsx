@@ -23,10 +23,6 @@ const Tabs: React.FC<TabsProps> = (props) => {
         onChange && onChange(tab.key, tab)
     }
 
-    useEffect(() => {
-        return () => setActiveKey('')
-    }, [])
-
     return (
         <div className=" flex items-center">
             {

@@ -18,9 +18,9 @@ const PublishPage: React.FC = () => {
             case PublushTypeEnum.VIDEO:
                 com = <PublishVideo />;
                 break;
-            // case PublushTypeEnum.POST:
-            //     com = <PublishPost />;
-            //     break;
+            case PublushTypeEnum.POST:
+                com = <PublishPost />;
+                break;
         }
         return com;
     }
