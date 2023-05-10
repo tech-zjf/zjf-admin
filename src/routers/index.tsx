@@ -31,12 +31,12 @@ const router = [
                 path: '/post',
                 element: <></>
             },
+            {
+                path: '/publish/:type',
+                element: <PublishPage />
+            },
 
         ]
-    },
-    {
-        path: '/publish/:type',
-        element: <PublishPage />
     },
     {
         path: '/login',
