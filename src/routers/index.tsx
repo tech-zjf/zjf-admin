@@ -1,3 +1,4 @@
+import PublishPage from "@/page/publish";
 import { lazy } from "react";
 
 const LoginPage = lazy(() => import('../page/login'));
@@ -29,6 +30,10 @@ const router = [
             {
                 path: '/post',
                 element: <></>
+            },
+            {
+                path: '/publish/:type',
+                element: <PublishPage />
             },
         ]
     },

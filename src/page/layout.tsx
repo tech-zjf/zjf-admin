@@ -33,7 +33,7 @@ const LayoutPage: React.FC = () => {
     return (
         <div className='w-full h-full flex flex-col'>
             <header className='w-full border-b border-gray-200'>
-                <div style={{ width: 1440 }} className='flex mx-auto items-center'>
+                <div style={{ width: 1440 }} className='flex mx-auto items-center px-10'>
                     <div className='h-full flex items-center mr-20 '>
                         <Icon type="icon-Blog" className='text-4xl mr-3 flex items-center' />
                         <p className=' font-bold text-gray-900 text-xl'>个人博客</p>

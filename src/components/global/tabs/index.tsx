@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface TabItem {
     key: string | number,
@@ -22,6 +22,10 @@ const Tabs: React.FC<TabsProps> = (props) => {
         setActiveKey(tab.key)
         onChange && onChange(tab.key, tab)
     }
+
+    useEffect(() => {
+        return () => setActiveKey('')
+    }, [])
 
     return (
         <div className=" flex items-center">
