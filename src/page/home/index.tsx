@@ -72,8 +72,6 @@ const mockFeed = [
     }
 ]
 
-
-
 const HomePage: React.FC = () => {
     return (
         <div className=" grid grid-cols-5 gap-5 mt-10">
