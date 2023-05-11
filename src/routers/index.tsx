@@ -1,10 +1,10 @@
-import PublishPage from "@/page/publish";
 import { lazy } from "react";
 
 const LoginPage = lazy(() => import('../page/login'));
 const LayoutPage = lazy(() => import('../page/layout'));
 const ArticlePage = lazy(() => import('../page/article'));
 const HomePage = lazy(() => import('../page/home'));
+const PublishPage = lazy(() => import('@/page/publish'));
 
 const router = [
     {
