@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ApiCode } from "./config";
+import { ApiCode } from "./constant";
 import { message } from "antd";
 import { getToken } from "@/libs/storage";
 
