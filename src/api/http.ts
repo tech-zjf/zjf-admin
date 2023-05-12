@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ApiCode } from "./config";
 import { message } from "antd";
+import { getToken } from "@/libs/storage";
 
 const http = axios.create({
   timeout: 2000,
@@ -8,6 +9,10 @@ const http = axios.create({
 });
 
 http.interceptors.request.use((config) => {
+  const token = getToken();
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
   return config;
 });
 
