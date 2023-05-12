@@ -3,6 +3,8 @@ import { lazy } from "react";
 const LoginPage = lazy(() => import('../page/login'));
 const LayoutPage = lazy(() => import('../page/layout'));
 const ArticlePage = lazy(() => import('../page/article'));
+const VideoPage = lazy(() => import('../page/video'));
+const PostPage = lazy(() => import('../page/post'));
 const HomePage = lazy(() => import('../page/home'));
 const PublishPage = lazy(() => import('@/page/publish'));
 
@@ -20,22 +22,17 @@ const router = [
                 element: <ArticlePage />
             },
             {
-                path: '/article',
-                element: <ArticlePage />
-            },
-            {
                 path: '/video',
-                element: <></>
+                element: <VideoPage />
             },
             {
                 path: '/post',
-                element: <></>
+                element: <PostPage />
             },
             {
                 path: '/publish/:type',
                 element: <PublishPage />
             },
-
         ]
     },
     {
