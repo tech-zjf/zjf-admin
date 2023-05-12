@@ -1,12 +1,21 @@
-import { Button, Form, Input } from "antd"
+import $request from "@/api";
+import { LoginParams } from "@/api/module/login/interface";
+import { setToken, setUserInfo } from "@/libs/storage";
+import { Button, Form, Input, message } from "antd"
+import { useNavigate } from "react-router-dom";
+
 const LoginCard: React.FC = () => {
-    const onFinish = (values: any) => {
-        console.log('Success:', values);
+    const navigate = useNavigate();
+
+    const onFinish = async (values: LoginParams) => {
+        try {
+            const { user, token } = await $request.login.loginByPhone(values)
+            setToken(token)
+            setUserInfo(user)
+            navigate('/')
+        } catch (error) { }
     };
 
-    const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
-    };
     return (
         <div className=" shadow p-5 rounded-md" style={{ width: 300 }}>
             <h2 className=" text-gray-900 text-xl font-semibold  text-center pb-3 mb-5">登录</h2>
@@ -14,9 +23,7 @@ const LoginCard: React.FC = () => {
                 name="basic"
                 labelCol={{ span: 6 }}
                 style={{ maxWidth: 280 }}
-                initialValues={{ remember: true }}
                 onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 autoComplete="off"
                 layout='vertical'
             >
@@ -30,8 +37,8 @@ const LoginCard: React.FC = () => {
 
                 <Form.Item
                     label="密码"
-                    name="password"
-                    rules={[{ required: true, message: '请输入密码' }, { pattern: /^\d{6}$/, message: '请输入6位数字的密码！' }]}
+                    name="code"
+                    rules={[{ required: true, message: '请输入密码' }, { pattern: /^\d{4}$/, message: '请输入4位数字的密码！' }]}
                 >
                     <Input.Password />
                 </Form.Item>
