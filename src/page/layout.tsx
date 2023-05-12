@@ -1,11 +1,12 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useMemo } from 'react';
 import { Outlet, useNavigate } from "react-router-dom";
 import Tabs from '../components/global/tabs';
 import Icon from '../components/widget/icon';
 import Notification from '@/components/widget/notification'
 import { Avatar } from 'antd';
 import Loading from '@/components/widget/loading';
-import $request from '@/api';
+import { getUserInfo } from '@/libs/storage';
+import { AuthorDetailResponse } from '@/api/module/user/interface';
 
 const tabs = [
     {
@@ -32,14 +33,8 @@ const tabs = [
 const LayoutPage: React.FC = () => {
     const navigate = useNavigate();
 
-    /** 获取用户信息 */
-    const getUserInfo = async () => {
-        const userInfo = await $request.user.getUserInfo('2')
-        console.log(userInfo)
-    }
-    useEffect(() => {
-        getUserInfo()
-    }, [])
+    /** 用户信息 */
+    const userInfo: AuthorDetailResponse = useMemo(() => getUserInfo(), [])
 
     return (
         <div className='w-full h-full flex flex-col'>
@@ -60,7 +55,7 @@ const LayoutPage: React.FC = () => {
                     <div className='ml-auto'>
                         <div className='flex items-center'>
                             <Notification count={9} />
-                            <Avatar src='https://p3-passport.byteimg.com/img/user-avatar/5a8ea89f20b9dcee6a4aa4ea6e646a17~100x100.awebp'
+                            <Avatar src={userInfo.wechatAvatarUrl}
                                 shape='circle'
                                 className="w-10 h-10"
                             />
