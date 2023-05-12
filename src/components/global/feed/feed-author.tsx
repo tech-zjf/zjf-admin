@@ -1,4 +1,4 @@
-import { AuthorDetailResponse } from "@/api/module/user/interface"
+import { AuthorDetailResponse } from "@/api/modules/user/interface"
 import { Avatar } from "antd"
 
 export interface FeedAuthorProps {

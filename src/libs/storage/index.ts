@@ -1,4 +1,4 @@
-import { AuthorDetailResponse } from "@/api/module/user/interface";
+import { AuthorDetailResponse } from "@/api/modules/user/interface";
 import { TOKEN, USER_INFO } from "./constant";
 
 const storage = window.localStorage;

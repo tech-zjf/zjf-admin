@@ -1,5 +1,5 @@
 import $request from "@/api";
-import { LoginParams } from "@/api/module/login/interface";
+import { LoginParams } from "@/api/modules/login/interface";
 import { setToken, setUserInfo } from "@/libs/storage";
 import { Button, Form, Input, message } from "antd"
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ const LoginCard: React.FC = () => {
     const onFinish = async (values: LoginParams) => {
         try {
             const { user, token } = await $request.login.loginByPhone(values)
+            message.success('登录成功！')
             setToken(token)
             setUserInfo(user)
             navigate('/')

@@ -1,4 +1,4 @@
-import { ArticleDetail } from "@/api/module/article/interface"
+import { ArticleDetail } from "@/api/modules/article/interface"
 
 interface FeedArticleItemProps {
     articleItem: ArticleDetail

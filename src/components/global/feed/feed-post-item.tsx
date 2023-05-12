@@ -1,4 +1,4 @@
-import { PostDetailResponse } from "@/api/module/post/interface"
+import { PostDetailResponse } from "@/api/modules/post/interface"
 import { Image } from 'antd'
 
 interface FeedPostItemProps {

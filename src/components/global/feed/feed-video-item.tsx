@@ -1,4 +1,4 @@
-import { VideoDetail } from "@/api/module/video/interface"
+import { VideoDetail } from "@/api/modules/video/interface"
 
 interface FeedVideoItemProps {
     videoItem: VideoDetail

@@ -6,7 +6,7 @@ import Notification from '@/components/widget/notification'
 import { Avatar } from 'antd';
 import Loading from '@/components/widget/loading';
 import { getUserInfo } from '@/libs/storage';
-import { AuthorDetailResponse } from '@/api/module/user/interface';
+import { AuthorDetailResponse } from '@/api/modules/user/interface';
 
 const tabs = [
     {

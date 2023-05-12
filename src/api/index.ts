@@ -1,9 +1,9 @@
 import { AxiosInstance } from "axios";
 import http from "./http";
-import ArticleApi from "./module/article";
-import VideoApi from "./module/video";
-import { UserApi } from "./module/user";
-import { LoginApi } from "./module/login";
+import ArticleApi from "./modules/article";
+import VideoApi from "./modules/video";
+import { UserApi } from "./modules/user";
+import { LoginApi } from "./modules/login";
 
 class Api {
   article: ArticleApi;
