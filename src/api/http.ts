@@ -1,11 +1,9 @@
 import axios from "axios";
-import ApiConfig from "./config";
-
-const isProd = process.env.ENV === "prod";
+import { ApiCode } from "./config";
 
 const http = axios.create({
   timeout: 2000,
-  baseURL: isProd ? ApiConfig.PROD_BASE_URL : ApiConfig.DEV_BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL,
 });
 
 http.interceptors.request.use((config) => {
@@ -13,7 +11,11 @@ http.interceptors.request.use((config) => {
 });
 
 http.interceptors.response.use((response) => {
-  return response;
+  const { code, data } = response.data;
+  if (code == ApiCode.SUCCESS) {
+    return data;
+  }
+  return data;
 });
 
 export default http;

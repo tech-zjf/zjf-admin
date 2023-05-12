@@ -9,7 +9,7 @@ const FeedAuthor: React.FC<FeedAuthorProps> = (props) => {
     const { author } = props
     return (
         <div className="flex items-center cursor-pointer" >
-            <Avatar src={author.url}
+            <Avatar src={author.wechatAvatarUrl}
                 shape='circle'
                 className="w-8 h-8 mr-2"
             />

@@ -1,8 +1,7 @@
 export interface AuthorDetailResponse {
   uid: number;
   nickname: string;
-  sex: number;
-  age: number;
+  gender: number;
   phone: number;
-  url: string;
+  wechatAvatarUrl: string;
 }

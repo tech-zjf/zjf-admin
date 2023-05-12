@@ -12,9 +12,9 @@ const mockFeed = [
             nickname: '张三',
             age: 12,
             uid: 1,
-            url: 'https://p3-passport.byteimg.com/img/user-avatar/5a8ea89f20b9dcee6a4aa4ea6e646a17~100x100.awebp',
+            wechatAvatarUrl: 'https://p3-passport.byteimg.com/img/user-avatar/5a8ea89f20b9dcee6a4aa4ea6e646a17~100x100.awebp',
             phone: 17683835692,
-            sex: 1
+            gender: 1
         },
         title: '进度条告急！抓紧报名「掘金技术引力榜2023」',
         content: '这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊这是一篇文章啊',
@@ -31,9 +31,9 @@ const mockFeed = [
             nickname: '李四',
             age: 12,
             uid: 1,
-            url: 'https://p3-passport.byteimg.com/img/user-avatar/7cac44e91df36585eb297a0d94b93d31~100x100.awebp',
+            wechatAvatarUrl: 'https://p3-passport.byteimg.com/img/user-avatar/7cac44e91df36585eb297a0d94b93d31~100x100.awebp',
             phone: 17683835692,
-            sex: 1
+            gender: 1
         },
         content: '这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊这是帖子内容啊',
         createTime: '2023-05-08 12:40:12',
@@ -57,9 +57,9 @@ const mockFeed = [
             nickname: '王二麻子',
             age: 12,
             uid: 1,
-            url: 'https://p3-passport.byteimg.com/img/user-avatar/21d781038fbf3c5e5ef6ec8db2f3443a~100x100.awebp',
+            wechatAvatarUrl: 'https://p3-passport.byteimg.com/img/user-avatar/21d781038fbf3c5e5ef6ec8db2f3443a~100x100.awebp',
             phone: 17683835692,
-            sex: 1
+            gender: 1
         },
         title: '这是视频标题啊',
         desc: '这是视频描述啊这是视频描述啊这是视频描述啊这是视频描述啊这是视频描述啊这是视频描述啊这是视频描述啊这是视频描述啊这是视频描述啊这是视频描述啊这是视频描述啊这是视频描述啊',

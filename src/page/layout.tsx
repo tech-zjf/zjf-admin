@@ -1,10 +1,11 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Outlet, useNavigate } from "react-router-dom";
 import Tabs from '../components/global/tabs';
 import Icon from '../components/widget/icon';
 import Notification from '@/components/widget/notification'
 import { Avatar } from 'antd';
 import Loading from '@/components/widget/loading';
+import $request from '@/api';
 
 const tabs = [
     {
@@ -30,6 +31,16 @@ const tabs = [
 ]
 const LayoutPage: React.FC = () => {
     const navigate = useNavigate();
+
+    /** 获取用户信息 */
+    const getUserInfo = async () => {
+        const userInfo = await $request.user.getUserInfo('2')
+        console.log(userInfo)
+    }
+    useEffect(() => {
+        getUserInfo()
+    }, [])
+
     return (
         <div className='w-full h-full flex flex-col'>
             <header className='w-full border-b border-gray-200'>
