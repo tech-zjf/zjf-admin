@@ -38,6 +38,7 @@ const router = [
             },
         ]
     },
+
     {
         path: '/login',
         element: <LoginPage />,

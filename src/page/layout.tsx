@@ -83,7 +83,7 @@ const LayoutPage: React.FC = () => {
                 </div>
             </header>
             <div className=" w-full flex-1 overflow-y-auto ">
-                <div className='mx-auto' style={{ width: 1200 }}>
+                <div className='mx-auto h-full' style={{ width: 1200 }}>
                     <Suspense
                         fallback={<Loading />}
                     >

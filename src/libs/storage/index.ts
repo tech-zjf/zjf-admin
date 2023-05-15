@@ -1,5 +1,5 @@
 import { AuthorDetailResponse } from "@/api/modules/user/interface";
-import { TOKEN, USER_INFO } from "./constant";
+import { ARTICLE_CONTENT, TOKEN, USER_INFO } from "./constant";
 
 const storage = window.localStorage;
 
@@ -30,5 +30,20 @@ export const setToken = (token?: string) => {
 /** 获取token */
 export const getToken = () => {
   const token = storage.getItem(TOKEN) || "";
+  return token;
+};
+
+/** 设置发布文章内容 */
+export const setArticleContent = (content?: string) => {
+  if (!content) {
+    storage.removeItem(ARTICLE_CONTENT);
+    return;
+  }
+  storage.setItem(ARTICLE_CONTENT, content);
+};
+
+/** 获取发布文章内容 */
+export const getArticleContent = () => {
+  const token = storage.getItem(ARTICLE_CONTENT) || "";
   return token;
 };
