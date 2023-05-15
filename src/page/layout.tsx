@@ -1,5 +1,5 @@
-import { Suspense, useEffect, useMemo } from 'react';
-import { Outlet, useNavigate } from "react-router-dom";
+import { Suspense, useEffect, useMemo, useState } from 'react';
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Tabs from '../components/global/tabs';
 import Icon from '../components/widget/icon';
 import Notification from '@/components/widget/notification'
@@ -8,33 +8,52 @@ import Loading from '@/components/widget/loading';
 import { getUserInfo } from '@/libs/storage';
 import { AuthorDetailResponse } from '@/api/modules/user/interface';
 
+export enum HomeHeaderTabsEnum {
+    HOME = "home",
+    ARTICLE = "article",
+    VIDEO = "video",
+    POST = "post",
+}
+
 const tabs = [
     {
-        key: "home",
+        key: HomeHeaderTabsEnum.HOME,
         label: '首页',
         path: '/',
     },
     {
-        key: 'article',
+        key: HomeHeaderTabsEnum.ARTICLE,
         label: '图文',
         path: '/article',
     },
     {
-        key: 'video',
+        key: HomeHeaderTabsEnum.VIDEO,
         label: '视频',
         path: '/video',
     },
     {
-        key: 'post',
+        key: HomeHeaderTabsEnum.POST,
         label: '帖子',
         path: '/post',
     }
 ]
 const LayoutPage: React.FC = () => {
+    const [defaultTab, setDefaultTab] = useState<string>(HomeHeaderTabsEnum.HOME)
     const navigate = useNavigate();
 
     /** 用户信息 */
     const userInfo: AuthorDetailResponse = useMemo(() => getUserInfo(), [])
+
+    const location = useLocation();
+
+    useEffect(() => {
+        const currentTab = tabs.find(tab => tab.path === location.pathname)
+        if (currentTab) {
+            setDefaultTab(currentTab.key)
+        } else {
+            setDefaultTab('')
+        }
+    }, [location]);
 
     return (
         <div className='w-full h-full flex flex-col'>
@@ -45,7 +64,7 @@ const LayoutPage: React.FC = () => {
                         <p className=' font-bold text-gray-900 text-xl'>个人博客</p>
                     </div>
                     <Tabs
-                        defaultKey='home'
+                        value={defaultTab}
                         items={tabs}
                         onChange={(key) => {
                             const navItem = tabs.find(v => v.key == key)

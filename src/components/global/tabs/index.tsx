@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface TabItem {
     key: string | number,
@@ -7,16 +7,20 @@ export interface TabItem {
 }
 
 export interface TabsProps {
-    defaultKey: string,
     items: TabItem[],
     space?: number,
+    value?: string;
     onChange?: (key: string | number, item: TabItem) => void;
 }
 
 const Tabs: React.FC<TabsProps> = (props) => {
-    const { defaultKey, items, onChange, space = 48 } = props
+    const { value, items, onChange, space = 48 } = props
 
-    const [activeKey, setActiveKey] = useState<string | number>(defaultKey)
+    const [activeKey, setActiveKey] = useState<string | number>()
+
+    useEffect(() => {
+        setActiveKey(value || '')
+    }, [value])
 
     const onHandleClick = (tab: TabItem) => {
         setActiveKey(tab.key)

@@ -81,7 +81,7 @@ const HomePage: React.FC = () => {
             <div className=" col-span-3 border px-3">
                 <div className="border-b">
                     <Tabs
-                        defaultKey={HomeMainTabsEnum.HOT}
+                        value={HomeMainTabsEnum.HOT}
                         items={HomeMainTabs}
                         space={24}
                         onChange={(key) => {
