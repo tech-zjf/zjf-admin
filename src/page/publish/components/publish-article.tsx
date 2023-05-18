@@ -25,7 +25,6 @@ const PublishArticle: React.FC = () => {
     };
 
 
-
     return (
         <div className="w-full h-full flex flex-col">
             <div className="flex justify-end py-3">
