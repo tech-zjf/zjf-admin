@@ -1,8 +1,9 @@
 import PublishCard from "@/components/global/publish-card"
 import LeftMenu from "./components/left-menu/left-menu"
 import Tabs from "@/components/global/tabs"
-import { HomeMainTabs, HomeMainTabsEnum } from "./constent"
+import { HomeLeftMenus, HomeLeftMenutabsEnum, HomeMainTabs, HomeMainTabsEnum } from "./constent"
 import FeedWrap from "@/components/global/feed/feed-wrap"
+import { useEffect, useState } from "react"
 
 const mockFeed = [
     {
@@ -73,10 +74,29 @@ const mockFeed = [
 ]
 
 const HomePage: React.FC = () => {
+    const [leftMenuValue, setLeftMenuValue] = useState<HomeLeftMenutabsEnum>(HomeLeftMenutabsEnum.ARTICLE)
+
+    const getFeedList = () => {
+        console.log('获取列表')
+    }
+
+    useEffect(() => {
+        getFeedList()
+    }, [])
+
+    const leftMenusChange = (key: HomeLeftMenutabsEnum) => {
+        setLeftMenuValue(key)
+        getFeedList()
+    }
+
     return (
         <div className=" grid grid-cols-5 gap-5 mt-10">
             <div className=" col-span-1">
-                <LeftMenu />
+                <LeftMenu
+                    items={HomeLeftMenus}
+                    value={leftMenuValue}
+                    onChange={leftMenusChange}
+                />
             </div>
             <div className=" col-span-3 border px-3">
                 <div className="border-b">

@@ -1,39 +1,37 @@
 import Icon from "@/components/widget/icon"
 import './styles.less'
+import { HomeLeftMenutabsEnum } from "../../constent"
 
-export const leftMenus = [
-    {
-        title: '推荐',
-        key: 'recommend',
-        icon: 'icon-tuijian'
-    },
-    {
-        title: '文章',
-        key: 'article',
-        icon: 'icon-article'
-    },
-    {
-        title: '视频',
-        key: 'video',
-        icon: 'icon-video'
-    },
-    {
-        title: '帖子',
-        key: 'post',
-        icon: 'icon-tiezi'
-    },
-]
 
-const LeftMenu: React.FC = () => {
+export interface LeftMenuItem {
+    title: string,
+    key: HomeLeftMenutabsEnum,
+    icon: string,
+}
+
+interface LeftMenuProps {
+    items: LeftMenuItem[],
+    value: HomeLeftMenutabsEnum,
+    onChange: (val: HomeLeftMenutabsEnum) => void
+}
+
+const LeftMenu: React.FC<LeftMenuProps> = (props) => {
+    const { items, value, onChange } = props
     return (
         <div className="px-3">
             <div className="left-menu-shadow rounded">
                 {
-                    leftMenus.map(menu => {
+                    items.map(menu => {
                         return (
-                            <div key={menu.key} className=" w-full py-3 px-5 flex items-center cursor-pointer">
-                                <Icon type={menu.icon} className=" text-xl mr-3 flex items-center" />
-                                <p className=" text-sm text-gray-900">{menu.title}</p>
+                            <div
+                                key={menu.key}
+                                className=" w-full py-3 px-5 flex items-center cursor-pointer transform "
+                                onClick={() => {
+                                    onChange(menu.key)
+                                }}
+                            >
+                                <Icon type={menu.icon} className={`  mr-3 flex items-center ${value === menu.key ? ' text-2xl' : 'text-xl'}`} />
+                                <p className={` text-gray-900 ${value === menu.key ? ' text-base font-semibold' : 'text-sm'}`}>{menu.title}</p>
                             </div>
                         )
                     })
