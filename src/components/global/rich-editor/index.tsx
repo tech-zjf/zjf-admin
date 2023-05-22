@@ -18,7 +18,6 @@ const RichEditor: React.FC<RichEditorProps> = (props) => {
     const editorConfig: Partial<IEditorConfig> = {
         placeholder: '请输入内容...',
     }
-    // 及时销毁 editor ，重要！
     useEffect(() => {
         return () => {
             if (editor == null) return
