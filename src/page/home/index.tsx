@@ -4,6 +4,7 @@ import Tabs from "@/components/global/tabs"
 import { HomeLeftMenus, HomeLeftMenutabsEnum, HomeMainTabs, HomeMainTabsEnum } from "./constent"
 import FeedWrap from "@/components/global/feed/feed-wrap"
 import { useEffect, useRef, useState } from "react"
+import { OrderByEnum, OrderEnum } from "@/api/interface"
 
 const mockFeed = [
     {
@@ -76,6 +77,20 @@ const mockFeed = [
 const HomePage: React.FC = () => {
     const [leftMenuValue, setLeftMenuValue] = useState<HomeLeftMenutabsEnum>(HomeLeftMenutabsEnum.ARTICLE)
     const isFirstRender = useRef(true)
+    const [step, setStep] = useState({ page: 1, pageSize: 10, orderBy: OrderByEnum.CREATE_TIME, order: OrderEnum.DESC })
+
+    /** 获取文章列表 */
+    const getArticleList = () => {
+
+    }
+    /** 获取视频列表 */
+    const getVideoList = () => {
+
+    }
+    /** 获取帖子列表 */
+    const getPostList = () => {
+
+    }
 
     const getFeedList = () => {
         console.log('获取列表', leftMenuValue)
