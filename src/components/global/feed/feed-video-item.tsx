@@ -7,7 +7,7 @@ interface FeedVideoItemProps {
 const FeedVideoItem: React.FC<FeedVideoItemProps> = (props) => {
     const { videoItem } = props
     return (
-        <div className="flex">
+        <div className="flex cursor-pointer">
             <div className="flex-1 overflow-hidden mr-5">
                 <h2 className=" text-base text-gray-900">{videoItem.title}</h2>
                 <p className=" text-xs text-gray-700 text-show-2row mt-2">

@@ -9,7 +9,7 @@ const FeedPostItem: React.FC<FeedPostItemProps> = (props) => {
     const { postItem } = props
     return (
         <div>
-            <p className="text-show-3row text-base text-gray-900 leading-6">{postItem.content}</p>
+            <p className="text-show-3row text-base text-gray-900 leading-6 cursor-pointer">{postItem.content}</p>
             <div className="flex items-center flex-wrap mt-3">
                 <Image.PreviewGroup>
                     {
