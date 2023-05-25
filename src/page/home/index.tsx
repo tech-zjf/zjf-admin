@@ -3,7 +3,7 @@ import LeftMenu from "./components/left-menu/left-menu"
 import Tabs from "@/components/global/tabs"
 import { HomeLeftMenus, HomeLeftMenutabsEnum, HomeMainTabs, HomeMainTabsEnum } from "./constent"
 import FeedWrap from "@/components/global/feed/feed-wrap"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const mockFeed = [
     {
@@ -75,19 +75,19 @@ const mockFeed = [
 
 const HomePage: React.FC = () => {
     const [leftMenuValue, setLeftMenuValue] = useState<HomeLeftMenutabsEnum>(HomeLeftMenutabsEnum.ARTICLE)
+    const isFirstRender = useRef(true)
 
     const getFeedList = () => {
-        console.log('获取列表')
+        console.log('获取列表', leftMenuValue)
     }
 
     useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false
+            return
+        }
         getFeedList()
-    }, [])
-
-    const leftMenusChange = (key: HomeLeftMenutabsEnum) => {
-        setLeftMenuValue(key)
-        getFeedList()
-    }
+    }, [leftMenuValue])
 
     return (
         <div className=" grid grid-cols-5 gap-5 mt-10">
@@ -95,7 +95,7 @@ const HomePage: React.FC = () => {
                 <LeftMenu
                     items={HomeLeftMenus}
                     value={leftMenuValue}
-                    onChange={leftMenusChange}
+                    onChange={setLeftMenuValue}
                 />
             </div>
             <div className=" col-span-3 border px-3">
