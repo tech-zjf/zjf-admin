@@ -11,3 +11,5 @@ export interface PostDetailResponse {
   likeCount: number;
   attachments: string[];
 }
+
+export interface PostListItem extends PostDetailResponse {}

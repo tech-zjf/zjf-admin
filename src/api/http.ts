@@ -17,12 +17,12 @@ http.interceptors.request.use((config) => {
 });
 
 http.interceptors.response.use((response) => {
-  const { code, data } = response.data;
+  const { code } = response.data;
   if (code == ApiCode.SUCCESS) {
-    return Promise.resolve(data);
+    return Promise.resolve(response.data);
   } else {
     message.error("请求失败，请联系管理员");
-    return Promise.reject(data);
+    return Promise.reject(response.data);
   }
 });
 

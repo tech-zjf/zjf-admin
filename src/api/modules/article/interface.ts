@@ -12,3 +12,5 @@ export interface ArticleDetail {
   likeCount: number;
   poster: string;
 }
+
+export interface ArticleListItem extends ArticleDetail {}

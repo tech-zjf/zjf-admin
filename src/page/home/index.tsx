@@ -4,7 +4,9 @@ import Tabs from "@/components/global/tabs"
 import { HomeLeftMenus, HomeLeftMenutabsEnum, HomeMainTabs, HomeMainTabsEnum } from "./constent"
 import FeedWrap from "@/components/global/feed/feed-wrap"
 import { useEffect, useRef, useState } from "react"
-import { OrderByEnum, OrderEnum } from "@/api/interface"
+import { HomeFeedList, OrderByEnum, OrderEnum } from "@/api/interface"
+import { ArticleListItem } from "@/api/modules/article/interface"
+import $request from "@/api"
 
 const mockFeed = [
     {
@@ -78,22 +80,34 @@ const HomePage: React.FC = () => {
     const [leftMenuValue, setLeftMenuValue] = useState<HomeLeftMenutabsEnum>(HomeLeftMenutabsEnum.ARTICLE)
     const isFirstRender = useRef(true)
     const [step, setStep] = useState({ page: 1, pageSize: 10, orderBy: OrderByEnum.CREATE_TIME, order: OrderEnum.DESC })
+    const [feedList, setFeedList] = useState<HomeFeedList>([])
 
     /** 获取文章列表 */
-    const getArticleList = () => {
-
+    const getArticleList = async () => {
+        const data = await $request.article.getArticleList(step)
+        return data
     }
     /** 获取视频列表 */
-    const getVideoList = () => {
-
+    const getVideoList = async () => {
+        return []
     }
     /** 获取帖子列表 */
-    const getPostList = () => {
-
+    const getPostList = async () => {
+        return []
     }
 
-    const getFeedList = () => {
-        console.log('获取列表', leftMenuValue)
+    const getFeedList = async () => {
+        let list: HomeFeedList = []
+        if (leftMenuValue === HomeLeftMenutabsEnum.ARTICLE) {
+            list = await getArticleList()
+        }
+        if (leftMenuValue === HomeLeftMenutabsEnum.VIDEO) {
+            list = await getVideoList()
+        }
+        if (leftMenuValue === HomeLeftMenutabsEnum.POST) {
+            list = await getPostList()
+        }
+        setFeedList(list)
     }
 
     useEffect(() => {
@@ -126,7 +140,7 @@ const HomePage: React.FC = () => {
                 </div>
                 <div>
                     {
-                        mockFeed.map(item => <FeedWrap item={item} key={item.id} />)
+                        feedList.map(item => <FeedWrap item={item} key={item.id} />)
                     }
                 </div>
             </div>

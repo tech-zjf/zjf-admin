@@ -1,3 +1,7 @@
+import { ArticleListItem } from "./modules/article/interface";
+import { PostListItem } from "./modules/post/interface";
+import { VideoListItem } from "./modules/video/interface";
+
 export interface ApiResponse<T> {
   code: number;
   message?: string;
@@ -13,3 +17,12 @@ export enum OrderEnum {
   DESC = "DESC",
   ASC = "ASC",
 }
+
+export interface GetListParams {
+  page: number;
+  pageSize: number;
+  orderBy: OrderByEnum;
+  order: OrderEnum;
+}
+
+export type HomeFeedList = ArticleListItem[] | VideoListItem[] | PostListItem[];

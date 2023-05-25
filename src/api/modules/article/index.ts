@@ -1,5 +1,6 @@
 import { AxiosInstance } from "axios";
-import { ArticleDetail } from "./interface";
+import { ArticleDetail, ArticleListItem } from "./interface";
+import { GetListParams } from "@/api/interface";
 
 class ArticleApi {
   axios: AxiosInstance;
@@ -9,8 +10,8 @@ class ArticleApi {
   }
 
   /** 图文列表 */
-  async getArticleList(params: any): Promise<ArticleDetail[]> {
-    const { data } = await this.axios.get(`/article/list`, {
+  async getArticleList(params: GetListParams): Promise<ArticleListItem[]> {
+    const { data } = await this.axios.get(`/article`, {
       params,
     });
     return data;

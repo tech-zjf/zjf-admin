@@ -14,3 +14,5 @@ export interface VideoDetail {
   poster: string;
   video: string;
 }
+
+export interface VideoListItem extends VideoDetail {}
