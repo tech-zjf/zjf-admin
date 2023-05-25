@@ -1,18 +1,14 @@
-/** 首页中心区域tab类型枚举 */
-export enum HomeMainTabsEnum {
-  HOT = "hot",
-  CREATIME = "createTime",
-}
+import { OrderByEnum } from "@/api/interface";
 
 /** 首页中心区域tab列表 */
 export const HomeMainTabs = [
   {
     label: "最热",
-    key: HomeMainTabsEnum.HOT,
+    key: OrderByEnum.LIKE,
   },
   {
     label: "最新",
-    key: HomeMainTabsEnum.CREATIME,
+    key: OrderByEnum.CREATE_TIME,
   },
 ];
 

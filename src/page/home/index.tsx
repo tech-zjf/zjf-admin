@@ -1,12 +1,12 @@
 import PublishCard from "@/components/global/publish-card"
 import LeftMenu from "./components/left-menu/left-menu"
 import Tabs from "@/components/global/tabs"
-import { HomeLeftMenus, HomeLeftMenutabsEnum, HomeMainTabs, HomeMainTabsEnum } from "./constent"
+import { HomeLeftMenus, HomeLeftMenutabsEnum, HomeMainTabs } from "./constent"
 import FeedWrap from "@/components/global/feed/feed-wrap"
 import { useEffect, useRef, useState } from "react"
 import { HomeFeedList, OrderByEnum, OrderEnum } from "@/api/interface"
-import { ArticleListItem } from "@/api/modules/article/interface"
 import $request from "@/api"
+import { Empty } from "antd"
 
 const mockFeed = [
     {
@@ -81,6 +81,7 @@ const HomePage: React.FC = () => {
     const isFirstRender = useRef(true)
     const [step, setStep] = useState({ page: 1, pageSize: 10, orderBy: OrderByEnum.CREATE_TIME, order: OrderEnum.DESC })
     const [feedList, setFeedList] = useState<HomeFeedList>([])
+    const [isLoadMore, setIsLoadMore] = useState(true)
 
     /** 获取文章列表 */
     const getArticleList = async () => {
@@ -107,6 +108,7 @@ const HomePage: React.FC = () => {
         if (leftMenuValue === HomeLeftMenutabsEnum.POST) {
             list = await getPostList()
         }
+        setIsLoadMore(list.length == step.pageSize)
         setFeedList(list)
     }
 
@@ -116,10 +118,11 @@ const HomePage: React.FC = () => {
             return
         }
         getFeedList()
-    }, [leftMenuValue])
+    }, [leftMenuValue, step])
+
 
     return (
-        <div className=" grid grid-cols-5 gap-5 mt-10">
+        <div className=" grid grid-cols-5 gap-5 py-10 h-full">
             <div className=" col-span-1">
                 <LeftMenu
                     items={HomeLeftMenus}
@@ -130,11 +133,11 @@ const HomePage: React.FC = () => {
             <div className=" col-span-3 border px-3">
                 <div className="border-b">
                     <Tabs
-                        value={HomeMainTabsEnum.HOT}
+                        value={OrderByEnum.CREATE_TIME}
                         items={HomeMainTabs}
                         space={24}
                         onChange={(key) => {
-                            console.log(key)
+                            setStep({ ...step, orderBy: key as OrderByEnum })
                         }}
                     />
                 </div>
@@ -143,6 +146,20 @@ const HomePage: React.FC = () => {
                         feedList.map(item => <FeedWrap item={item} key={item.id} />)
                     }
                 </div>
+                {
+                    !(!!feedList.length) && (
+                        <div className="py-10 h-full flex items-center justify-center">
+                            <Empty description="暂无数据 ~ " />
+                        </div>
+                    )
+                }
+                {
+                    !isLoadMore && !!feedList.length && (
+                        <p className="text-center text-gray-700 text-sm mt-4">
+                            没有更多啦
+                        </p>
+                    )
+                }
             </div>
             <div className=" col-span-1 px-3">
                 <PublishCard />

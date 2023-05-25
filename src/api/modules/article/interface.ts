@@ -1,3 +1,4 @@
+import { CategoryDetail } from "../category/interface";
 import { AuthorDetailResponse } from "../user/interface";
 /** 文章详情 */
 export interface ArticleDetail {
@@ -11,6 +12,7 @@ export interface ArticleDetail {
   viewCount: number;
   likeCount: number;
   poster: string;
+  category: CategoryDetail;
 }
 
 export interface ArticleListItem extends ArticleDetail {}

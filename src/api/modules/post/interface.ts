@@ -1,3 +1,4 @@
+import { CategoryDetail } from "../category/interface";
 import { AuthorDetailResponse } from "../user/interface";
 
 export interface PostDetailResponse {
@@ -10,6 +11,7 @@ export interface PostDetailResponse {
   viewCount: number;
   likeCount: number;
   attachments: string[];
+  category: CategoryDetail;
 }
 
 export interface PostListItem extends PostDetailResponse {}

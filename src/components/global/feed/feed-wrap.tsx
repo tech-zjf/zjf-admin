@@ -9,6 +9,7 @@ import FeedArticleItem from "./feed-article-item"
 import FeedVideoItem from "./feed-video-item"
 import FeedPostItem from "./feed-post-item"
 import { FeedItemType } from "./constant"
+import { Tag } from "antd"
 
 export interface FeedWrapProps {
     item: ArticleDetail | VideoDetail | PostDetailResponse,
@@ -40,7 +41,14 @@ const FeedWrap: React.FC<FeedWrapProps> = (props) => {
             <div className="mt-4">
                 <CoreContentCom />
             </div>
-            <div className="flex items-center justify-between mt-4">
+            {
+                item?.category?.name && (
+                    <div className=" flex items-center cursor-pointer mt-3">
+                        <Tag color="orange">{item.category.name}</Tag>
+                    </div>
+                )
+            }
+            <div className="flex items-center justify-between mt-3">
                 <CreateTime createTime={item.createTime} />
                 <div className=" flex items-center">
                     <div className="mr-6">

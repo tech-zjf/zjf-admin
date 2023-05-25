@@ -1,3 +1,4 @@
+import { CategoryDetail } from "../category/interface";
 import { AuthorDetailResponse } from "../user/interface";
 
 /** 视频详情 */
@@ -13,6 +14,7 @@ export interface VideoDetail {
   likeCount: number;
   poster: string;
   video: string;
+  category: CategoryDetail;
 }
 
 export interface VideoListItem extends VideoDetail {}
