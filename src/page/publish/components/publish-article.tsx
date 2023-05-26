@@ -1,15 +1,19 @@
 import RichEditor from "@/components/global/rich-editor"
 import { getArticleContent } from "@/libs/storage"
-import { useState } from "react"
-import { Button, Form, Input, Drawer } from 'antd';
+import { useEffect, useState } from "react"
+import { Button, Form, Input, Drawer, Select } from 'antd';
+import $request from "@/api";
 
 const articleFileds = {
     title: '标题',
+    categoryId: '分类'
 }
 
 const PublishArticle: React.FC = () => {
     const [content, setContent] = useState<string>('')
     const [openDrawer, setOpenDrawer] = useState<boolean>(false)
+    const [categoryOptions, setCategoryOptions] = useState<{ label: string, value: number }[]>([])
+
 
     const getDraftContent = () => {
         const articleContent = getArticleContent()
@@ -23,6 +27,17 @@ const PublishArticle: React.FC = () => {
         }
         console.log(params)
     };
+
+    /** 获取分类列表 */
+    const getCategoryOptions = async () => {
+        const list = await $request.category.getCategoryList()
+        const options = list.map(v => ({ label: v.name, value: v.id }))
+        setCategoryOptions(options)
+    }
+
+    useEffect(() => {
+        getCategoryOptions()
+    }, [])
 
 
     return (
@@ -66,9 +81,19 @@ const PublishArticle: React.FC = () => {
                     <Form.Item
                         label={articleFileds.title}
                         name="title"
-                        rules={[{ required: true, message: '输入标题' }]}
+                        rules={[{ required: true, message: '请输入标题...' }]}
                     >
-                        <Input />
+                        <Input placeholder="请输入标题..." />
+                    </Form.Item>
+                    <Form.Item
+                        label={articleFileds.categoryId}
+                        name="category"
+                        rules={[{ required: true, message: '请选择分类...' }]}
+                    >
+                        <Select
+                            options={categoryOptions}
+                            placeholder="请选择分类..."
+                        />
                     </Form.Item>
                     <Form.Item >
                         <Button type="primary" htmlType="submit">
