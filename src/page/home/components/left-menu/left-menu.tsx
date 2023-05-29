@@ -1,6 +1,6 @@
 import Icon from "@/components/widget/icon"
 import './styles.less'
-import { HomeLeftMenutabsEnum } from "../../constent"
+import { HomeLeftMenutabsEnum } from "../../constant"
 
 
 export interface LeftMenuItem {

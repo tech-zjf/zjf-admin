@@ -1,7 +1,7 @@
 import PublishCard from "@/components/global/publish-card"
 import LeftMenu from "./components/left-menu/left-menu"
 import Tabs from "@/components/global/tabs"
-import { HomeLeftMenus, HomeLeftMenutabsEnum, HomeMainTabs } from "./constent"
+import { HomeLeftMenus, HomeLeftMenutabsEnum, HomeMainTabs } from "./constant"
 import FeedWrap from "@/components/global/feed/feed-wrap"
 import { useEffect, useRef, useState } from "react"
 import { HomeFeedList, OrderByEnum, OrderEnum } from "@/api/interface"
