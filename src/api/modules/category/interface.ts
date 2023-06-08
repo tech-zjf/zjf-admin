@@ -4,3 +4,8 @@ export interface CategoryDetail {
   icon: string;
   createTime: string;
 }
+
+export interface CreateCategory {
+  name: string,
+  icon:string,
+}

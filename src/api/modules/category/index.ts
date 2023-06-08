@@ -1,5 +1,5 @@
 import { AxiosInstance } from "axios";
-import { CategoryDetail } from "./interface";
+import { CategoryDetail, CreateCategory } from "./interface";
 
 export class CategoryApi {
   axios: AxiosInstance;
@@ -9,6 +9,11 @@ export class CategoryApi {
   /** 获取分类列表 */
   async getCategoryList(): Promise<CategoryDetail[]> {
     const { data } = await this.axios.get("/category");
+    return data;
+  }
+
+  async createCategory(params:CreateCategory) {
+    const { data } = await this.axios.post("/category",{...params});
     return data;
   }
 }
