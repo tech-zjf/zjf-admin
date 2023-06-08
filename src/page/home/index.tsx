@@ -78,7 +78,6 @@ const mockFeed = [
 
 const HomePage: React.FC = () => {
     const [leftMenuValue, setLeftMenuValue] = useState<HomeLeftMenutabsEnum>(HomeLeftMenutabsEnum.ARTICLE)
-    const isFirstRender = useRef(true)
     const [step, setStep] = useState({ page: 1, pageSize: 10, orderBy: OrderByEnum.CREATE_TIME, order: OrderEnum.DESC })
     const [feedList, setFeedList] = useState<HomeFeedList>([])
     const [isLoadMore, setIsLoadMore] = useState(true)
@@ -113,10 +112,6 @@ const HomePage: React.FC = () => {
     }
 
     useEffect(() => {
-        if (isFirstRender.current) {
-            isFirstRender.current = false
-            return
-        }
         getFeedList()
     }, [leftMenuValue, step])
 
