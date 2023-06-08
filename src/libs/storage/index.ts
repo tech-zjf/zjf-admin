@@ -14,7 +14,7 @@ export const setUserInfo = (user?: AuthorDetailResponse) => {
 
 /** 获取用户信息 */
 export const getUserInfo = () => {
-  const userInfo = storage.getItem(USER_INFO) || "";
+  const userInfo = storage.getItem(USER_INFO) || "{}";
   return JSON.parse(userInfo);
 };
 

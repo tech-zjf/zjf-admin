@@ -9,7 +9,7 @@ const LoginCard: React.FC = () => {
 
     const onFinish = async (values: LoginParams) => {
         try {
-            const { user, token } = await $request.login.loginByPhone(values)
+            const {token,user} = await $request.login.loginByPhone(values)
             message.success('登录成功！')
             setToken(token)
             setUserInfo(user)
