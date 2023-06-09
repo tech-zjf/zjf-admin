@@ -8,6 +8,9 @@ interface CustomUploadComProps {
     value?: string;
 }
 
+/** 
+ * 图片上传组件 
+ */
 const CustomUploadCom: React.FC<CustomUploadComProps> = (props) => {
     const { onChange, value } = props;
 

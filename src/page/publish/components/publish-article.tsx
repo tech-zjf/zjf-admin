@@ -26,18 +26,21 @@ const PublishArticle: React.FC = () => {
         setContent(articleContent);
     };
 
-    const onFinish = async (values: any) => {
-        if (!content || content.length < 50) {
-            message.info('请输入不少于50字的文章内容！')
-            return
-        }
-        const params = {
-            ...values,
-            content,
-        };
-        await $request.article.createArticle(params)
-        message.success('创建成功')
-        navigate('/')
+    /** 创建文章 */
+    const createArticle = async (values: any) => {
+        try {
+            if (!content || content.length < 50) {
+                message.info('请输入不少于50字的文章内容！')
+                return
+            }
+            const params = {
+                ...values,
+                content,
+            };
+            await $request.article.createArticle(params)
+            message.success('创建成功')
+            navigate('/')
+        } catch (error) { }
     };
 
     /** 获取分类列表 */
@@ -50,8 +53,6 @@ const PublishArticle: React.FC = () => {
     useEffect(() => {
         getCategoryOptions();
     }, []);
-
-
 
     return (
         <div className="w-full h-full flex flex-col">
@@ -84,7 +85,7 @@ const PublishArticle: React.FC = () => {
             >
                 <Form
                     style={{ maxWidth: 600 }}
-                    onFinish={onFinish}
+                    onFinish={createArticle}
                     autoComplete="off"
                     layout="vertical"
                 >
