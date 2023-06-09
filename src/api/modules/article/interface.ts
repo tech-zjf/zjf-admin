@@ -16,3 +16,10 @@ export interface ArticleDetail {
 }
 
 export interface ArticleListItem extends ArticleDetail {}
+
+export interface CreateArticle {
+  title: string;
+  content: string;
+  poster: string;
+  categoryId:number
+}
