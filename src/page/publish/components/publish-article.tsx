@@ -3,12 +3,12 @@ import { getArticleContent } from "@/libs/storage";
 import { useEffect, useState } from "react";
 import { Button, Form, Input, Drawer, Select } from "antd";
 import $request from "@/api";
-import Dragger from "antd/es/upload/Dragger";
-import { RcFile } from "antd/es/upload";
+import CustomUploadCom from "@/components/widget/upload";
 
 const articleFileds = {
     title: "标题",
     categoryId: "分类",
+    poster: "封面",
 };
 
 const PublishArticle: React.FC = () => {
@@ -42,12 +42,7 @@ const PublishArticle: React.FC = () => {
         getCategoryOptions();
     }, []);
 
-    const beforeUpload = async (file: RcFile) => {
-        const formData = new FormData();
-        formData.append('image', file); 
-        const data = await $request.upload.uploadImg(formData)
-        console.log(data)
-    };
+
 
     return (
         <div className="w-full h-full flex flex-col">
@@ -92,17 +87,19 @@ const PublishArticle: React.FC = () => {
                         <Input placeholder="请输入标题..." />
                     </Form.Item>
                     <Form.Item
+                        label={articleFileds.poster}
+                        name="poster"
+                        rules={[{ required: true, message: "上传封面" }]}
+                    >
+                        <CustomUploadCom />
+                    </Form.Item>
+                    <Form.Item
                         label={articleFileds.categoryId}
                         name="category"
                         rules={[{ required: true, message: "请选择分类..." }]}
                     >
                         <Select options={categoryOptions} placeholder="请选择分类..." />
                     </Form.Item>
-                    <Dragger beforeUpload={beforeUpload} showUploadList={false}>
-                        <p className="ant-upload-text">
-                            点击或者拖拽上传
-                        </p>
-                    </Dragger>
                     <Form.Item>
                         <Button type="primary" htmlType="submit">
                             确认并发布
