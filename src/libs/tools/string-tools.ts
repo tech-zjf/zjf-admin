@@ -4,4 +4,13 @@ class StringTools {
     let phoneRegxp = /^1[3-9]\d{9}$/;
     return phoneRegxp.test(phone);
   }
+
+  /** 将标签替换为空 */
+  static filterTagToEmpty(htmlStr: string) {
+    const regex = /<[^>]+>/g;
+    const str = htmlStr.replace(regex, "");
+    return str;
+  }
 }
+
+export default StringTools;
