@@ -1,9 +1,10 @@
 import RichEditor from "@/components/global/rich-editor";
 import { getArticleContent } from "@/libs/storage";
 import { useEffect, useState } from "react";
-import { Button, Form, Input, Drawer, Select } from "antd";
+import { Button, Form, Input, Drawer, Select, message } from "antd";
 import $request from "@/api";
 import CustomUploadCom from "@/components/widget/upload";
+import { useNavigate } from "react-router-dom";
 
 const articleFileds = {
     title: "标题",
@@ -18,17 +19,25 @@ const PublishArticle: React.FC = () => {
         { label: string; value: number }[]
     >([]);
 
+    const navigate = useNavigate()
+
     const getDraftContent = () => {
         const articleContent = getArticleContent();
         setContent(articleContent);
     };
 
-    const onFinish = (values: any) => {
+    const onFinish = async (values: any) => {
+        if (!content || content.length < 50) {
+            message.info('请输入不少于50字的文章内容！')
+            return
+        }
         const params = {
             ...values,
             content,
         };
-        console.log(params);
+        await $request.article.createArticle(params)
+        message.success('创建成功')
+        navigate('/')
     };
 
     /** 获取分类列表 */
@@ -95,7 +104,7 @@ const PublishArticle: React.FC = () => {
                     </Form.Item>
                     <Form.Item
                         label={articleFileds.categoryId}
-                        name="category"
+                        name="categoryId"
                         rules={[{ required: true, message: "请选择分类..." }]}
                     >
                         <Select options={categoryOptions} placeholder="请选择分类..." />
