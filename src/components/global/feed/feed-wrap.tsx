@@ -10,6 +10,7 @@ import FeedVideoItem from "./feed-video-item"
 import FeedPostItem from "./feed-post-item"
 import { FeedItemType } from "./constant"
 import { Tag } from "antd"
+import { useNavigate } from "react-router-dom"
 
 export interface FeedWrapProps {
     item: ArticleDetail | VideoDetail | PostDetailResponse,
@@ -17,6 +18,7 @@ export interface FeedWrapProps {
 
 const FeedWrap: React.FC<FeedWrapProps> = (props) => {
     const { item } = props
+    const navigate = useNavigate()
 
     /** 中心区域组件 */
     const CoreContentCom = () => {
@@ -35,10 +37,16 @@ const FeedWrap: React.FC<FeedWrapProps> = (props) => {
         return com;
     }
 
+    /** 跳转到详情页 */
+    const toDetailPage = () => {
+        const { type, id } = item;
+        navigate(`${type}/${id}`)
+    }
+
     return (
-        <div className=" py-4 border-b">
+        <div className=" py-4 border-b"  >
             <FeedAuthor author={item.author} />
-            <div className="mt-4">
+            <div className="mt-4" onClick={toDetailPage}>
                 <CoreContentCom />
             </div>
             {

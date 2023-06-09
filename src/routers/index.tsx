@@ -21,15 +21,15 @@ const router = [
                 element: <HomePage />
             },
             {
-                path: '/article',
+                path: '/article/:id',
                 element: <ArticlePage />
             },
             {
-                path: '/video',
+                path: '/video/:id',
                 element: <VideoPage />
             },
             {
-                path: '/post',
+                path: '/post/:id',
                 element: <PostPage />
             },
             {
