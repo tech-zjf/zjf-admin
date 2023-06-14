@@ -1,6 +1,5 @@
 import './style.less'
 import '@wangeditor/editor/dist/css/style.css' // 引入 css
-
 import React, { useState, useEffect } from 'react'
 import { Editor, Toolbar } from '@wangeditor/editor-for-react'
 import { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor'
