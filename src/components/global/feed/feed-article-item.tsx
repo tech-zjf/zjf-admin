@@ -10,9 +10,9 @@ const FeedArticleItem: React.FC<FeedArticleItemProps> = (props) => {
     return (
         <div className="flex cursor-pointer">
             <div className="flex-1 overflow-hidden mr-5">
-                <h2 className=" text-base text-gray-900">
+                <h3 className=" text-base text-gray-900">
                     {articleItem.title}
-                </h2>
+                </h3>
                 <p className=" text-xs text-gray-700 text-show-2row mt-2">
                     {StringTools.filterTagToEmpty(articleItem.content)}
                 </p>

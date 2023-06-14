@@ -125,7 +125,7 @@ const HomePage: React.FC = () => {
                     onChange={setLeftMenuValue}
                 />
             </div>
-            <div className=" col-span-3 border px-3">
+            <div className=" col-span-3 border px-3 pb-10 mb-10">
                 <div className="border-b">
                     <Tabs
                         value={OrderByEnum.CREATE_TIME}
@@ -151,7 +151,7 @@ const HomePage: React.FC = () => {
                 {
                     !isLoadMore && !!feedList.length && (
                         <p className="text-center text-gray-700 text-sm mt-4">
-                            没有更多啦
+                            没有更多啦 ~
                         </p>
                     )
                 }
