@@ -24,10 +24,10 @@ class ArticleApi {
   }
 
   /** 创建文章 */
-  async createArticle(params: CreateArticle): Promise<{articleId:number}> {
+  async createArticle(params: CreateArticle): Promise<{ articleId: number }> {
     const { data } = await this.axios.post(`/article`, {
-         ...params
-       });
+      ...params,
+    });
     return data;
   }
 }
