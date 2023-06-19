@@ -1,11 +1,18 @@
+import ViewItem from "./view-item";
+
 interface ViewsProps {
-    className: string
+  className?: string;
+  items: any[];
 }
 
 const Views: React.FC<ViewsProps> = (props) => {
-    const { className } = props
-    return (
-        <div className={className}>todo: 评论</div>
-    )
-}
-export default Views
+  const { className, items } = props;
+  return (
+    <div>
+      {items.map((item) => (
+        <ViewItem item={item} key={item.id} />
+      ))}
+    </div>
+  );
+};
+export default Views;
