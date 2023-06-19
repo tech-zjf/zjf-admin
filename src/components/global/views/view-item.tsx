@@ -1,20 +1,13 @@
-import { AuthorDetailResponse } from "@/api/modules/user/interface";
 import CreateTime from "@/components/widget/create-time";
 import LikeIcon from "@/components/widget/like";
 import ViewIcon from "@/components/widget/view";
 import { Avatar } from "antd";
 import Views from ".";
+import ViewInput from "./view-input";
+import { ViewItemResponse } from "@/api/modules/views/interface";
 
 interface ViewItemProps {
-  item: {
-    id: number;
-    author: AuthorDetailResponse;
-    createTime: string;
-    isLike: boolean;
-    likeCount: number;
-    viewCount: number;
-    children: any[];
-  };
+  item: ViewItemResponse;
 }
 
 const ViewItem: React.FC<ViewItemProps> = (props) => {
@@ -45,7 +38,9 @@ const ViewItem: React.FC<ViewItemProps> = (props) => {
               </div>
             </div>
           </div>
-          <div>评论</div>
+          <div className="mt-6">
+            <ViewInput />
+          </div>
           {item?.children?.length && <Views items={item.children} />}
         </div>
       </div>
