@@ -1,46 +1,33 @@
 import { Button } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import data from "@emoji-mart/data";
-import Picker from "@emoji-mart/react";
 import { useState } from "react";
 
 const ViewInput: React.FC = () => {
-  const [showEmojiPicker, setShowEmojiPicker] = useState<boolean>(false);
+    const [viewStep, setViewStep] = useState({
+        content: '',
+        pics: [],
+    })
 
-  const onEmojiSelect = (e: any) => {
-    console.log(e);
-  };
+    /** 
+     * 创建评论 
+     */
+    const createView = () => {
+    };
 
-  return (
-    <div>
-      <TextArea rows={4} />
-      <div className="mt-4 flex justify-between items-center">
-        <div className="flex items-center text-sm">
-          <div className="mr-6 relative">
-            <p
-              className=" text-xl flex items-center cursor-pointer"
-              onClick={() => {
-                setShowEmojiPicker(!showEmojiPicker);
-              }}
-            >
-              😊
-              <span className="text-sm ml-1">表情</span>
-            </p>
-            <div
-              className={`${
-                showEmojiPicker ? "block" : "hidden"
-              } absolute top-8 left-0 z-10`}
-            >
-              <Picker data={data} onEmojiSelect={onEmojiSelect} />
+    return (
+        <div>
+            <TextArea rows={4} onChange={(e) => {
+                console.log(e)
+            }} />
+            <div className="mt-4 flex justify-between items-center">
+                <div className="flex items-center text-sm">
+                    <p>图片上传</p>
+                </div>
+                <div className="flex items-center">
+                    <Button onClick={createView}>发布</Button>
+                </div>
             </div>
-          </div>
-          <p>图片上传</p>
         </div>
-        <div className="flex items-center">
-          <Button>发布</Button>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 export default ViewInput;
