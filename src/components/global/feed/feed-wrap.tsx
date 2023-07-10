@@ -81,7 +81,10 @@ const FeedWrap: React.FC<FeedWrapProps> = (props) => {
                 <CreateTime createTime={item.createTime} />
                 <div className=" flex items-center">
                     <div className="mr-6">
-                        <ViewIcon viewCount={item.viewCount} />
+                        <ViewIcon
+                            viewCount={item.viewCount}
+                            onClick={toDetailPage}
+                        />
                     </div>
                     <div>
                         <LikeIcon isLike={item.isLike} likeCount={item.likeCount} onToggleLikeStatus={onToggleLikeStatus} />
