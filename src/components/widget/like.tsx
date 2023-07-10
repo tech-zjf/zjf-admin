@@ -2,13 +2,14 @@ import Icon from "./icon"
 
 interface LikeIconProps {
     likeCount: number,
-    isLike: boolean
+    isLike: boolean,
+    onToggleLikeStatus: () => void
 }
 
 const LikeIcon: React.FC<LikeIconProps> = (props) => {
-    const { likeCount, isLike } = props
+    const { likeCount, isLike, onToggleLikeStatus } = props
     return (
-        <div className="flex items-center text-gray-900 cursor-pointer">
+        <div className="flex items-center text-gray-900 cursor-pointer" onClick={onToggleLikeStatus}>
             {
                 isLike ? (
                     <Icon type="icon-dianzan" className=" flex items-center mr-1" />

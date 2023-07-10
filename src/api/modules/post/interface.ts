@@ -1,9 +1,10 @@
+import { CONTENT_TYPE } from "@/constant";
 import { CategoryDetail } from "../category/interface";
 import { AuthorDetailResponse } from "../user/interface";
 
 export interface PostDetailResponse {
   id: number;
-  type: string;
+  type: CONTENT_TYPE;
   author: AuthorDetailResponse;
   content: string;
   createTime: string;
@@ -14,4 +15,4 @@ export interface PostDetailResponse {
   category: CategoryDetail;
 }
 
-export interface PostListItem extends PostDetailResponse {}
+export interface PostListItem extends PostDetailResponse { }

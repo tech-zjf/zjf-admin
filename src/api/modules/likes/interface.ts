@@ -1,3 +1,5 @@
+import { CONTENT_TYPE } from "@/constant"
+
 /** 
  * 点赞类型
   */
@@ -25,6 +27,17 @@ export const ViewTypeMap = new Map([
     [LikeTypeEnum.VIDEO, 'video'],
     [LikeTypeEnum.POST, 'post'],
     [LikeTypeEnum.VIEW, 'view'],
+])
+
+
+/** 
+ * 根据内容类型获取点赞关联类型 article: 1
+ */
+export const GetViewTypeByContentTypeMap = new Map([
+    [CONTENT_TYPE.ARTICLE, LikeTypeEnum.ARTICLE],
+    [CONTENT_TYPE.VIDEO, LikeTypeEnum.VIDEO],
+    [CONTENT_TYPE.POST, LikeTypeEnum.POST],
+    [CONTENT_TYPE.VIEW, LikeTypeEnum.VIEW],
 ])
 
 

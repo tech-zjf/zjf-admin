@@ -1,10 +1,11 @@
+import { CONTENT_TYPE } from "@/constant";
 import { CategoryDetail } from "../category/interface";
 import { AuthorDetailResponse } from "../user/interface";
 
 /** 视频详情 */
 export interface VideoDetail {
   id: number;
-  type: string;
+  type: CONTENT_TYPE;
   author: AuthorDetailResponse;
   title: string;
   desc: string;
@@ -17,4 +18,4 @@ export interface VideoDetail {
   category: CategoryDetail;
 }
 
-export interface VideoListItem extends VideoDetail {}
+export interface VideoListItem extends VideoDetail { }

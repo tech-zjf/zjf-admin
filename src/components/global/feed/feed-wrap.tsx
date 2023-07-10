@@ -8,29 +8,32 @@ import LikeIcon from "@/components/widget/like"
 import FeedArticleItem from "./feed-article-item"
 import FeedVideoItem from "./feed-video-item"
 import FeedPostItem from "./feed-post-item"
-import { FeedItemType } from "./constant"
-import { Tag } from "antd"
+import { Tag, message } from "antd"
 import { useNavigate } from "react-router-dom"
+import $request from "@/api"
+import { GetViewTypeByContentTypeMap, LikeTypeEnum } from "@/api/modules/likes/interface"
+import { CONTENT_TYPE } from "@/constant"
 
 export interface FeedWrapProps {
     item: ArticleDetail | VideoDetail | PostDetailResponse,
+    onRefreshList: () => void
 }
 
 const FeedWrap: React.FC<FeedWrapProps> = (props) => {
-    const { item } = props
+    const { item, onRefreshList } = props
     const navigate = useNavigate()
 
     /** 中心区域组件 */
     const CoreContentCom = () => {
         let com = <></>
         switch (item.type) {
-            case FeedItemType.ARTICLE:
+            case CONTENT_TYPE.ARTICLE:
                 com = <FeedArticleItem articleItem={item as ArticleDetail} />;
                 break;
-            case FeedItemType.VIDEO:
+            case CONTENT_TYPE.VIDEO:
                 com = <FeedVideoItem videoItem={item as VideoDetail} />;
                 break;
-            case FeedItemType.POST:
+            case CONTENT_TYPE.POST:
                 com = <FeedPostItem postItem={item as PostDetailResponse} />;
                 break;
         }
@@ -41,6 +44,24 @@ const FeedWrap: React.FC<FeedWrapProps> = (props) => {
     const toDetailPage = () => {
         const { type, id } = item;
         navigate(`${type}/${id}`)
+    }
+
+    /** 
+     * 点赞
+     */
+    const onToggleLikeStatus = async () => {
+        const relationType = GetViewTypeByContentTypeMap.get(item.type)
+        if (!relationType) {
+            message.warning('该类型不支持点赞！')
+            return
+        }
+        if (item.isLike) {
+            await $request.like.removeLike({ parentId: item.id, relationType })
+        } else {
+            await $request.like.addLike({ parentId: item.id, relationType })
+        }
+        await onRefreshList()
+        message.success('ok!')
     }
 
     return (
@@ -63,7 +84,7 @@ const FeedWrap: React.FC<FeedWrapProps> = (props) => {
                         <ViewIcon viewCount={item.viewCount} />
                     </div>
                     <div>
-                        <LikeIcon isLike={item.isLike} likeCount={item.likeCount} />
+                        <LikeIcon isLike={item.isLike} likeCount={item.likeCount} onToggleLikeStatus={onToggleLikeStatus} />
                     </div>
                 </div>
             </div>

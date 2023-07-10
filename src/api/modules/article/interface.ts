@@ -1,9 +1,10 @@
+import { CONTENT_TYPE } from "@/constant";
 import { CategoryDetail } from "../category/interface";
 import { AuthorDetailResponse } from "../user/interface";
 /** 文章详情 */
 export interface ArticleDetail {
   id: number;
-  type: string;
+  type: CONTENT_TYPE;
   author: AuthorDetailResponse;
   title: string;
   content: string;
@@ -15,11 +16,11 @@ export interface ArticleDetail {
   category: CategoryDetail;
 }
 
-export interface ArticleListItem extends ArticleDetail {}
+export interface ArticleListItem extends ArticleDetail { }
 
 export interface CreateArticle {
   title: string;
   content: string;
   poster: string;
-  categoryId:number
+  categoryId: number
 }
