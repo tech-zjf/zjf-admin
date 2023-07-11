@@ -58,7 +58,7 @@ const LayoutPage: React.FC = () => {
 
     return (
         <div className='w-full h-full flex flex-col'>
-            <header className='w-full border-b border-gray-200'>
+            <header className='w-full border-b  border-gray-200 dark:border-gray-900 dark:bg-black'>
                 <div style={{ width: 1440 }} className='flex mx-auto items-center px-10'>
                     <div className='h-full flex items-center mr-20 '>
                         <Icon type="icon-Blog" className='text-4xl mr-3 flex items-center' />
@@ -83,7 +83,7 @@ const LayoutPage: React.FC = () => {
                     </div>
                 </div>
             </header>
-            <div className=" w-full flex-1 overflow-y-auto ">
+            <div className=" w-full flex-1 overflow-y-auto dark:bg-black">
                 <div className='mx-auto h-full' style={{ width: 1200 }}>
                     <Suspense
                         fallback={<Loading />}

@@ -31,7 +31,7 @@ const LeftMenu: React.FC<LeftMenuProps> = (props) => {
                                 }}
                             >
                                 <Icon type={menu.icon} className={`  mr-3 flex items-center ${value === menu.key ? ' text-2xl' : 'text-xl'}`} />
-                                <p className={` text-gray-900 ${value === menu.key ? ' text-base font-semibold' : 'text-sm'}`}>{menu.title}</p>
+                                <p className={` text-gray-900 dark:text-white ${value === menu.key ? ' text-base font-semibold' : 'text-sm'}`}>{menu.title}</p>
                             </div>
                         )
                     })

@@ -33,7 +33,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
                 items.map(v => {
                     return (
                         <p
-                            className={`py-4  text-sm cursor-pointer ${activeKey == v.key ? ' text-gray-900 text-base font-medium' : 'text-gray-900'}`}
+                            className={`py-4  text-sm cursor-pointer ${activeKey == v.key ? ' text-gray-900 text-base font-medium dark:text-white' : 'text-gray-900 dark:text-white'}`}
                             style={{ marginRight: space }}
                             key={v.key}
                             onClick={() => onHandleClick(v)}
