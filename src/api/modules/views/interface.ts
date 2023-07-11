@@ -37,8 +37,10 @@ export interface ViewItemResponse {
   isLike: boolean;
   likeCount: number;
   viewCount: number;
-  parentAuthor?: AuthorDetailResponse;
+  parentAuthor?: AuthorDetailResponse | null;
   child: ViewItemResponse[];
+  content: string,
+  active: boolean
 }
 
 export interface FindViews extends GetListParams {

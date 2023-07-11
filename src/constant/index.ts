@@ -7,3 +7,5 @@ export enum CONTENT_TYPE {
     POST = 'post',
     VIEW = 'view',
 }
+
+export const noop = () => { }

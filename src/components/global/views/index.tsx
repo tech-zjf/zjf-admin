@@ -1,3 +1,5 @@
+import { Fragment, useEffect } from "react";
+import ViewChild from "./view-child";
 import ViewItem from "./view-item";
 
 interface ViewsProps {
@@ -6,13 +8,23 @@ interface ViewsProps {
 }
 
 const Views: React.FC<ViewsProps> = (props) => {
-  const { className, items } = props;
+  const { items } = props;
+  useEffect(() => {
+    console.log(items)
+  }, [])
   return (
-    <div>
+    <>
       {items.map((item) => (
-        <ViewItem item={item} key={item.id} />
+        <Fragment key={item.id}>
+          <ViewItem item={item} />
+          {!!item?.child?.length && (
+            <div className="ml-12">
+              <ViewChild items={item.child} />
+            </div>
+          )}
+        </Fragment>
       ))}
-    </div>
+    </>
   );
 };
 export default Views;

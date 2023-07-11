@@ -9,7 +9,7 @@ class ViewApi {
     }
 
     /** 评论列表 */
-    async getViewList(params: FindViews): Promise<ViewItemResponse> {
+    async getViewList(params: FindViews): Promise<{ list: ViewItemResponse[] }> {
         const { data } = await this.axios.get(`/views`, {
             params,
         });

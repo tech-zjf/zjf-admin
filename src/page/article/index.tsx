@@ -8,58 +8,35 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "@wangeditor/editor/dist/css/style.css"; // 引入 css
 import Views from "@/components/global/views";
-
-const views = [
-  {
-    id: 1,
-    author: {
-      wechatAvatarUrl: "http://127.0.0.1:3008/upload/images/fugui.jpeg",
-      nickname: "tech-zjf",
-    },
-    children: [
-      {
-        id: 2,
-        author: {
-          wechatAvatarUrl: "http://127.0.0.1:3008/upload/images/fugui.jpeg",
-          nickname: "tech-12313",
-        },
-      },
-      {
-        id: 3,
-        author: {
-          wechatAvatarUrl: "http://127.0.0.1:3008/upload/images/fugui.jpeg",
-          nickname: "tech-9999",
-        },
-      },
-      {
-        id: 4,
-        author: {
-          wechatAvatarUrl: "http://127.0.0.1:3008/upload/images/fugui.jpeg",
-          nickname: "tech-9999",
-        },
-      },
-      {
-        id: 5,
-        author: {
-          wechatAvatarUrl: "http://127.0.0.1:3008/upload/images/fugui.jpeg",
-          nickname: "tech-9999",
-        },
-      },
-    ],
-  },
-];
+import { OrderByEnum, OrderEnum } from "@/api/interface";
+import { ViewItemResponse, ViewTypeEnum } from "@/api/modules/views/interface";
+import FunctionTools from "@/libs/tools/function-tools";
 
 const ArticlePage: React.FC = () => {
   const { id } = useParams();
   const [articleInfo, setArticleInfo] = useState<ArticleDetail>();
+  const [views, setViews] = useState<ViewItemResponse[]>([])
 
   const getArticleInfo = async () => {
     const data = await $request.article.getArticleDetail(+id!);
     setArticleInfo(data);
   };
 
+  const getViews = async () => {
+    let { list } = await $request.view.getViewList({
+      page: 1,
+      pageSize: 10,
+      orderBy: OrderByEnum.CREATE_TIME,
+      order: OrderEnum.DESC,
+      parentId: +id!,
+      relationType: ViewTypeEnum.ARTICLE
+    })
+    setViews(FunctionTools.formatViews(list))
+  }
+
   useEffect(() => {
     getArticleInfo();
+    getViews()
   }, []);
 
   return (
@@ -86,7 +63,7 @@ const ArticlePage: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="mt-10 custom-shadow px-5 pt-5">
+        <div className="mt-10 custom-shadow px-5 py-5">
           <h4 className=" text-xl font-bold text-gray-900">全部评论 · 99</h4>
           <Views items={views}></Views>
         </div>
