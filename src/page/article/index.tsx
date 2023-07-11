@@ -64,7 +64,7 @@ const ArticlePage: React.FC = () => {
           </div>
         </div>
         <div className="mt-10 custom-shadow px-5 py-5">
-          <h4 className=" text-xl font-bold text-gray-900">全部评论 · 99</h4>
+          <h4 className=" text-xl font-bold text-gray-900">全部评论 · ~</h4>
           <Views items={views}></Views>
         </div>
       </div>

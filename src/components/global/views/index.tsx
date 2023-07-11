@@ -1,6 +1,7 @@
 import { Fragment, useEffect } from "react";
 import ViewChild from "./view-child";
 import ViewItem from "./view-item";
+import { Empty } from "antd";
 
 interface ViewsProps {
   className?: string;
@@ -9,9 +10,7 @@ interface ViewsProps {
 
 const Views: React.FC<ViewsProps> = (props) => {
   const { items } = props;
-  useEffect(() => {
-    console.log(items)
-  }, [])
+
   return (
     <>
       {items.map((item) => (
@@ -24,6 +23,13 @@ const Views: React.FC<ViewsProps> = (props) => {
           )}
         </Fragment>
       ))}
+      {
+        !(!!items.length) && (
+          <div className="py-10 h-full flex items-center justify-center">
+            <Empty description="暂无数据 ~ " />
+          </div>
+        )
+      }
     </>
   );
 };
