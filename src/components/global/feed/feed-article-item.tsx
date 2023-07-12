@@ -1,5 +1,4 @@
 import { ArticleDetail } from "@/api/modules/article/interface"
-import StringTools from "@/libs/tools/string-tools"
 
 interface FeedArticleItemProps {
     articleItem: ArticleDetail
@@ -10,11 +9,8 @@ const FeedArticleItem: React.FC<FeedArticleItemProps> = (props) => {
     return (
         <div className="flex cursor-pointer">
             <div className="flex-1 overflow-hidden mr-5">
-                <h3 className=" text-base text-gray-900">
+                <p className="text-base text-gray-900 leading-6 text-show-2row">
                     {articleItem.title}
-                </h3>
-                <p className=" text-xs text-gray-700 text-show-2row mt-2">
-                    {StringTools.filterTagToEmpty(articleItem.content)}
                 </p>
             </div>
             <div
