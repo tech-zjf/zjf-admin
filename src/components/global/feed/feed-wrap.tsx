@@ -11,7 +11,7 @@ import FeedPostItem from "./feed-post-item"
 import { Tag, message } from "antd"
 import { useNavigate } from "react-router-dom"
 import $request from "@/api"
-import { GetViewTypeByContentTypeMap, LikeTypeEnum } from "@/api/modules/likes/interface"
+import { GetViewTypeByContentTypeMap, } from "@/api/modules/likes/interface"
 import { CONTENT_TYPE } from "@/constant"
 
 export interface FeedWrapProps {

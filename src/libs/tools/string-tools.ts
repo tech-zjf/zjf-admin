@@ -1,9 +1,4 @@
 class StringTools {
-  /** 是否是手机号 */
-  static isPhone(phone: string) {
-    let phoneRegxp = /^1[3-9]\d{9}$/;
-    return phoneRegxp.test(phone);
-  }
 
   /** 将标签替换为空 */
   static filterTagToEmpty(htmlStr: string) {
