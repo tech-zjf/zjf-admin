@@ -7,7 +7,7 @@
     "dev": "vite --mode beta",
     "build:beta": "tsc && vite build --mode beta",
     "build:prod": "tsc && vite build --mode prod",
-    "publish:prod": "scp -r ./dist/*  root@101.132.36.144:/app/zjf-project/zjf-admin",
+    "publish:prod": "scp -r ./dist/*  root@101.132.36.144:/app/zjf-admin",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

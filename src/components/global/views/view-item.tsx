@@ -5,7 +5,7 @@ import { Avatar } from "antd";
 import ViewInput from "./view-input";
 import { ViewItemResponse } from "@/api/modules/views/interface";
 import { noop } from "@/constant";
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 
 interface ViewItemProps {
     item: ViewItemResponse;
